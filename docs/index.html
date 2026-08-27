@@ -45,7 +45,7 @@
   .hero{border-bottom:1px solid var(--gray-200);background:
     radial-gradient(700px 400px at 75% 20%, rgba(191,255,0,.18), transparent 60%),
     linear-gradient(to bottom,#fff 0%, #FCFCFC 100%)}
-  .hero-inner{max-width:var(--max);margin:0 auto;padding:44px 32px 32px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;min-height:520px}
+  .hero-inner{max-width:var(--max);margin:0 auto;padding:44px 32px 32px;display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:start;min-height:520px}
   .eyebrow{display:inline-flex;align-items:center;gap:7px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600);background:var(--gray-50);border:1px solid var(--gray-200);padding:6px 10px;border-radius:999px}
   .eyebrow .dot{width:7px;height:7px;background:#00D26A;border-radius:50%;box-shadow:0 0 0 4px rgba(0,210,106,.18);animation:pulse 1.8s infinite}
   @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
@@ -88,18 +88,18 @@
   .pill-label{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.05em;text-transform:uppercase;background:var(--lime);border:1px solid var(--black);padding:6px 9px;border-radius:6px;font-weight:700}
   .section-head p{margin:0;color:var(--gray-600);font-size:13px;line-height:1.5;max-width:560px}
   .bento{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .card{border:1.5px solid var(--black);border-radius:var(--radius-lg);padding:20px 20px 16px;display:flex;flex-direction:column;min-height:184px;position:relative;overflow:hidden;background:#fff}
+  .card{border:1.5px solid var(--black);border-radius:var(--radius-lg);padding:20px 20px 16px;display:flex;flex-direction:column;min-height:184px;position:relative;overflow:hidden;background:#fff;padding-right:96px}
   .card.black{background:var(--black);color:#fff}
   .card .tag{display:inline-block;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:12px;line-height:1.2;padding:4px 7px;border-radius:6px;border:1px solid var(--black);margin-bottom:10px;width:fit-content}
   .card.white .tag{background:var(--lime)}
   .card.black .tag{background:#fff;color:var(--black)}
   .card h3{margin:0;font-size:16px;letter-spacing:-.02em;line-height:1.2;font-weight:700}
-  .card p{margin:8px 0 0;color:#5A5A5A;font-size:12.5px;line-height:1.55}
+  .card p{margin:8px 0 0;color:#5A5A5A;font-size:12.5px;line-height:1.55;max-width:100%}
   .card.black p{color:#B5B5B5}
   .card .learn{display:inline-flex;align-items:center;gap:6px;margin-top:auto;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700}
   .card .learn i{width:18px;height:18px;border-radius:999px;display:grid;place-items:center;background:var(--black);color:#fff;font-style:normal;font-size:10px}
   .card.black .learn i{background:#fff;color:var(--black)}
-  .card .illust{position:absolute;right:12px;bottom:36px;opacity:.96}
+  .card .illust{position:absolute;right:10px;bottom:12px;opacity:.96;pointer-events:none;max-width:88px;max-height:64px}
   /* CTA wide - full bleed inside section */
   .cta-wide{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:center;background:#fff;border:1.5px solid var(--black);border-radius:var(--radius-lg);padding:26px;margin:0}
   .cta-wide h3{margin:0 0 8px;font-size:20px;letter-spacing:-.02em}
@@ -123,17 +123,18 @@
   .case-col:last-child{border-right:0}
   .case-col p{margin:0 0 12px;color:#CFCFCF;font-size:12px;line-height:1.6}
   .case-col .learn{color:var(--lime);font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700}
-  /* prompt in hero - expandable */
-  .prompt-hero{margin-top:14px;border:1.5px dashed #0A0A0A;border-radius:10px;background:#FFFEF3;overflow:hidden}
-  .prompt-hero summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-weight:700}
+  /* prompt in hero - preview + expandable, copy without expand */
+  .prompt-hero{margin-top:14px;border:1.5px dashed #0A0A0A;border-radius:10px;background:#FFFEF3;padding:10px 12px;display:grid;gap:8px}
+  .prompt-row{display:flex;align-items:center;gap:10px;min-width:0}
+  .prompt-preview{flex:1;min-width:0;font-family:"JetBrains Mono",monospace;font-size:11px;line-height:1.5;color:var(--black);background:#fff;border:1px solid var(--gray-200);border-radius:8px;padding:8px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prompt-row .copy-btn{flex:0 0 auto}
+  .prompt-hero details{border-top:1px solid #E9E9E9;margin-top:2px;padding-top:8px}
+  .prompt-hero summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;color:var(--gray-600)}
   .prompt-hero summary::-webkit-details-marker{display:none}
-  .prompt-hero summary .exp{width:18px;height:18px;border:1px solid var(--black);border-radius:50%;display:grid;place-items:center;font-size:11px;background:#fff;flex:0 0 18px;transition:.2s}
+  .prompt-hero summary .exp{width:16px;height:16px;border:1px solid var(--black);border-radius:50%;display:grid;place-items:center;font-size:11px;background:#fff;transition:.2s;line-height:1}
   .prompt-hero[open] summary .exp{transform:rotate(45deg);background:var(--lime)}
-  .prompt-hero .prompt-body{padding:0 14px 14px}
-  .prompt-hero .prompt-code{background:#0B0B0B;color:#E6E6E6;border-radius:10px;padding:12px 14px;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;border:1px solid #222;max-height:240px;overflow:auto}
-  .prompt-hero .prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
-  .prompt-hero .prompt-hint{color:var(--gray-600);font-size:11px;line-height:1.5}
-  .copy-btn{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--black);background:var(--black);color:#fff;padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:700}
+  .prompt-hero .prompt-code{margin-top:8px;background:#0B0B0B;color:#E6E6E6;border-radius:10px;padding:12px 14px;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;border:1px solid #222;max-height:260px;overflow:auto}
+  .copy-btn{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--black);background:var(--black);color:#fff;padding:7px 12px;border-radius:999px;cursor:pointer;font-weight:700;white-space:nowrap}
   .copy-btn.copied{background:var(--lime);color:var(--black);border-color:var(--black)}
   /* install - two columns full */
   .install{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
@@ -212,9 +213,13 @@
           <div><span class="dim">$</span> lmstudio-ollama-mcp <span class="lime-c">"add tests for src/utils/logger.ts"</span> <span class="dim" style="font-size:10px">(alias: forge)</span></div>
           <div style="margin-top:6px;color:#9A9A9A;font-size:11px">↳ gemma-3-12b-qat · 6.5GB Q4_0 · 8 agents · 1.2 s — local only, no API key</div>
         </div>
-        <details class="prompt-hero" id="heroPrompt">
-          <summary>Agent setup prompt — click to expand & copy <span class="exp">+</span></summary>
-          <div class="prompt-body">
+        <div class="prompt-hero" id="heroPrompt">
+          <div class="prompt-row">
+            <div class="prompt-preview" title="Click Copy to copy full prompt — expand to see all">You are an autonomous coding agent. Set up lmstudio-ollama-mcp in this repository and start working: 1. Install: npm install -g lmstudio-ollama-mcp ...</div>
+            <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy</button>
+          </div>
+          <details>
+            <summary>Show full prompt <span class="exp">+</span></summary>
             <div class="prompt-code" id="promptText">You are an autonomous coding agent. Set up lmstudio-ollama-mcp in this repository and start working:
 
 1. Install: npm install -g lmstudio-ollama-mcp
@@ -227,12 +232,8 @@
    - Use --model lmstudio:&lt;model&gt; or --provider ollama to force local
 
 Keep edits minimal, verify with bash/tests, summarize changes.</div>
-            <div class="prompt-actions">
-              <span class="prompt-hint">For Claude Code / Codex style agents. Paste into your agent terminal.</span>
-              <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy</button>
-            </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="orbit-wrap">
