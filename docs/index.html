@@ -123,6 +123,18 @@
   .case-col:last-child{border-right:0}
   .case-col p{margin:0 0 12px;color:#CFCFCF;font-size:12px;line-height:1.6}
   .case-col .learn{color:var(--lime);font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700}
+  /* prompt in hero - expandable */
+  .prompt-hero{margin-top:14px;border:1.5px dashed #0A0A0A;border-radius:10px;background:#FFFEF3;overflow:hidden}
+  .prompt-hero summary{list-style:none;cursor:pointer;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.04em;text-transform:uppercase;font-weight:700}
+  .prompt-hero summary::-webkit-details-marker{display:none}
+  .prompt-hero summary .exp{width:18px;height:18px;border:1px solid var(--black);border-radius:50%;display:grid;place-items:center;font-size:11px;background:#fff;flex:0 0 18px;transition:.2s}
+  .prompt-hero[open] summary .exp{transform:rotate(45deg);background:var(--lime)}
+  .prompt-hero .prompt-body{padding:0 14px 14px}
+  .prompt-hero .prompt-code{background:#0B0B0B;color:#E6E6E6;border-radius:10px;padding:12px 14px;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;border:1px solid #222;max-height:240px;overflow:auto}
+  .prompt-hero .prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:10px}
+  .prompt-hero .prompt-hint{color:var(--gray-600);font-size:11px;line-height:1.5}
+  .copy-btn{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--black);background:var(--black);color:#fff;padding:6px 12px;border-radius:999px;cursor:pointer;font-weight:700}
+  .copy-btn.copied{background:var(--lime);color:var(--black);border-color:var(--black)}
   /* install - two columns full */
   .install{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;align-items:start}
   .install h3{margin:0 0 10px;font-size:20px;letter-spacing:-.02em}
@@ -131,15 +143,6 @@
   .steps .num{width:24px;height:24px;border-radius:50%;background:var(--lime);border:1.2px solid var(--black);display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;flex:0 0 24px}
   .steps .txt{font-size:12.5px;line-height:1.55;color:var(--gray-600)}
   .steps .txt strong{color:var(--black)}
-  /* agent prompt - copyable */
-  .prompt-card{margin-top:16px;border:1.5px dashed var(--black);border-radius:12px;background:#FFFEF3;padding:14px;position:relative}
-  .prompt-card .prompt-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
-  .prompt-card .prompt-title{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;font-weight:700;display:flex;align-items:center;gap:6px}
-  .prompt-card .prompt-title .badge{background:var(--lime);border:1px solid var(--black);padding:2px 6px;border-radius:999px;font-size:10px}
-  .copy-btn{font-family:"JetBrains Mono",monospace;font-size:11px;border:1px solid var(--black);background:var(--black);color:#fff;padding:6px 10px;border-radius:999px;cursor:pointer;font-weight:700}
-  .copy-btn:active{transform:scale(.98)}
-  .prompt-code{background:#0B0B0B;color:#E6E6E6;border-radius:10px;padding:12px 14px;font-family:"JetBrains Mono",monospace;font-size:11.5px;line-height:1.6;white-space:pre-wrap;word-break:break-word;border:1px solid #222;max-height:240px;overflow:auto}
-  .prompt-hint{margin-top:8px;color:var(--gray-600);font-size:11px;line-height:1.5}
   /* footer full bleed */
   .foot{border-top:1px solid var(--gray-200);background:#fff}
   .foot-inner{max-width:var(--max);margin:0 auto;padding:18px 32px;display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:12px;color:var(--gray-600)}
@@ -175,7 +178,7 @@
         <a href="#why">Why local</a>
         <a href="#providers">Providers</a>
         <a href="#agents">Agents</a>
-        <a href="#docs">Docs</a>
+        <a href="docs.html">Docs</a>
         <a href="https://github.com/fthsrbst/lmstudio-ollama-mcp" target="_blank">GitHub</a>
       </div>
       <div class="nav-cta">
@@ -201,7 +204,7 @@
         </p>
         <div class="hero-ctas">
           <a class="btn-pill black" href="#install">Install — npm i -g lmstudio-ollama-mcp</a>
-          <a class="btn-pill" href="https://github.com/fthsrbst/lmstudio-ollama-mcp" target="_blank">Read the docs →</a>
+          <a class="btn-pill" href="docs.html">Read the docs →</a>
         </div>
         <div class="code-mini">
           <div><span class="dim">$</span> lmstudio-ollama-mcp doctor <span class="dim">— diagnose providers & hardware</span></div>
@@ -209,6 +212,27 @@
           <div><span class="dim">$</span> lmstudio-ollama-mcp <span class="lime-c">"add tests for src/utils/logger.ts"</span> <span class="dim" style="font-size:10px">(alias: forge)</span></div>
           <div style="margin-top:6px;color:#9A9A9A;font-size:11px">↳ gemma-3-12b-qat · 6.5GB Q4_0 · 8 agents · 1.2 s — local only, no API key</div>
         </div>
+        <details class="prompt-hero" id="heroPrompt">
+          <summary>Agent setup prompt — click to expand & copy <span class="exp">+</span></summary>
+          <div class="prompt-body">
+            <div class="prompt-code" id="promptText">You are an autonomous coding agent. Set up lmstudio-ollama-mcp in this repository and start working:
+
+1. Install: npm install -g lmstudio-ollama-mcp
+2. Verify: lmstudio-ollama-mcp doctor && lmstudio-ollama-mcp models
+   - Expect: LM Studio at http://localhost:1234/v1 or Ollama at http://localhost:11434
+   - If no models, guide the user: LM Studio -&gt; Load model -&gt; Start Server, or: ollama pull qwen2.5-coder:7b
+3. Init: lmstudio-ollama-mcp init (creates lmstudio-ollama-mcp.json; supports hybrid via OPENAI_API_KEY / ANTHROPIC_API_KEY)
+4. Work: lmstudio-ollama-mcp "explore the codebase, then implement &lt;TASK&gt; and verify with tests"
+   - Hardware-aware parallel sub-agents run automatically (--parallel auto based on CPU/RAM)
+   - Use --model lmstudio:&lt;model&gt; or --provider ollama to force local
+
+Keep edits minimal, verify with bash/tests, summarize changes.</div>
+            <div class="prompt-actions">
+              <span class="prompt-hint">For Claude Code / Codex style agents. Paste into your agent terminal.</span>
+              <button class="copy-btn" id="copyBtn" onclick="copyPrompt()">Copy</button>
+            </div>
+          </div>
+        </details>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="orbit-wrap">
@@ -304,7 +328,7 @@
   </section>
 
   <!-- CODE DEMO -->
-  <section class="section" id="docs">
+  <section class="section" id="demo">
     <div class="container">
       <div class="code-block">
         <div class="code-bar"><i style="background:#FF5F56"></i><i style="background:#FFBD2E"></i><i style="background:#27C93F"></i><div class="t">lmstudio-ollama-mcp — local-first coding agent</div></div>
@@ -373,25 +397,9 @@ lmstudio-ollama-mcp models <span style="color:#6A6A6A"># or: forge doctor / forg
 lmstudio-ollama-mcp <span style="color:#BFFF00">"refactor src/providers into a registry"</span>
 lmstudio-ollama-mcp --parallel 4 <span style="color:#BFFF00">"add tests + docs for the new registry"</span></pre>
           </div>
-          <!-- copyable agent prompt -->
-          <div class="prompt-card" id="agent-prompt">
-            <div class="prompt-head">
-              <div class="prompt-title">🤖 Agent prompt — kopyala & yapıştır <span class="badge">for agents</span></div>
-              <button class="copy-btn" onclick="copyPrompt()">Copy</button>
-            </div>
-            <div class="prompt-code" id="promptText">You are an autonomous coding agent. Set up lmstudio-ollama-mcp in this repository and start working:
-
-1. Install: npm install -g lmstudio-ollama-mcp
-2. Verify: lmstudio-ollama-mcp doctor && lmstudio-ollama-mcp models
-   - Expect: LM Studio at http://localhost:1234/v1 or Ollama at http://localhost:11434
-   - If no models, guide the user: LM Studio → Load model → Start Server, or: ollama pull qwen2.5-coder:7b
-3. Init: lmstudio-ollama-mcp init (creates lmstudio-ollama-mcp.json; supports hybrid via OPENAI_API_KEY / ANTHROPIC_API_KEY)
-4. Work: lmstudio-ollama-mcp "explore the codebase, then implement &lt;TASK&gt; and verify with tests"
-   - Hardware-aware parallel sub-agents run automatically (--parallel auto based on CPU/RAM)
-   - Use --model lmstudio:&lt;model&gt; or --provider ollama to force local
-
-Keep edits minimal, verify with bash/tests, summarize changes.</div>
-            <div class="prompt-hint">Claude Code / Codex tarzı agent'lar için. Terminal'e tek seferde yapıştırın — proje otomatik kurulup çalışmaya hazır olur.</div>
+          <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
+            <a class="btn-pill black" href="docs.html" style="font-size:11px;padding:7px 12px">Full documentation →</a>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--gray-600);align-self:center">See <code>docs.html</code> for detailed provider, routing, and MCP guides.</span>
           </div>
         </div>
         <ol class="steps">
@@ -412,7 +420,7 @@ Keep edits minimal, verify with bash/tests, summarize changes.</div>
       <div>
         <a href="https://github.com/fthsrbst/lmstudio-ollama-mcp">GitHub</a> &nbsp;·&nbsp;
         <a href="https://www.npmjs.com/package/lmstudio-ollama-mcp">npm</a> &nbsp;·&nbsp;
-        <a href="#install">Docs</a>
+        <a href="docs.html">Docs</a>
       </div>
     </div>
   </footer>
