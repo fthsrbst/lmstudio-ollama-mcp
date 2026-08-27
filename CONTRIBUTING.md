@@ -1,6 +1,6 @@
-# Contributing to ForgeCode
+# Contributing to lmstudio-ollama-mcp
 
-Thanks for contributing — ForgeCode is local-first, so we keep the bar high on code quality and low on ceremony.
+Thanks for contributing — lmstudio-ollama-mcp is local-first, so we keep the bar high on code quality and low on ceremony.
 
 ## Quick start
 

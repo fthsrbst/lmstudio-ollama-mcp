@@ -4,9 +4,9 @@ import path from "node:path";
 import { DEFAULT_CONFIG } from "../../config/schema.js";
 
 export async function handleInit() {
-  const target = path.join(process.cwd(), "forgecode.json");
+  const target = path.join(process.cwd(), "lmstudio-ollama-mcp.json");
   if (fs.existsSync(target)) {
-    console.log(chalk.yellow(`  forgecode.json already exists at ${target}`));
+    console.log(chalk.yellow(`  lmstudio-ollama-mcp.json already exists at ${target}`));
     return;
   }
   const sample = {
@@ -18,5 +18,5 @@ export async function handleInit() {
   };
   fs.writeFileSync(target, JSON.stringify(sample, null, 2));
   console.log(chalk.green(`  ✔ Created ${target}`));
-  console.log(chalk.dim("  Edit providers/router as needed. Run `forge doctor` to verify."));
+  console.log(chalk.dim("  Edit providers/router as needed. Run `lmstudio-ollama-mcp doctor` (or `forge doctor`) to verify."));
 }

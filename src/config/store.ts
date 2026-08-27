@@ -4,8 +4,15 @@ import os from "node:os";
 import { ConfigSchema, DEFAULT_CONFIG, type ForgeConfig } from "./schema.js";
 import { logger } from "../utils/logger.js";
 
-const GLOBAL_CONFIG_PATH = path.join(os.homedir(), ".forgecode", "config.json");
-const PROJECT_CONFIG_NAMES = ["forgecode.json", ".forgecode.json", "forge.json"];
+const GLOBAL_CONFIG_PATH = path.join(os.homedir(), ".lmstudio-ollama-mcp", "config.json");
+const LEGACY_GLOBAL_CONFIG_PATH = path.join(os.homedir(), ".forgecode", "config.json");
+const PROJECT_CONFIG_NAMES = [
+  "lmstudio-ollama-mcp.json",
+  ".lmstudio-ollama-mcp.json",
+  "forgecode.json",
+  ".forgecode.json",
+  "forge.json",
+];
 
 function readJsonIfExists(p: string): unknown | null {
   try {
@@ -35,7 +42,8 @@ export function findProjectConfig(startDir = process.cwd()): string | null {
 }
 
 export function loadConfig(cwd = process.cwd()): ForgeConfig {
-  const globalRaw = readJsonIfExists(GLOBAL_CONFIG_PATH);
+  // prefer new path, fallback to legacy .forgecode for backward compat
+  const globalRaw = readJsonIfExists(GLOBAL_CONFIG_PATH) ?? readJsonIfExists(LEGACY_GLOBAL_CONFIG_PATH);
   const projectPath = findProjectConfig(cwd);
   const projectRaw = projectPath ? readJsonIfExists(projectPath) : null;
 
@@ -87,7 +95,7 @@ export function saveGlobalConfig(patch: Partial<ForgeConfig>) {
 }
 
 export function saveProjectConfig(dir: string, patch: Partial<ForgeConfig>) {
-  const file = path.join(path.resolve(dir), "forgecode.json");
+  const file = path.join(path.resolve(dir), "lmstudio-ollama-mcp.json");
   const existing = readJsonIfExists(file) ?? {};
   const next = { ...(existing as object), ...patch };
   fs.writeFileSync(file, JSON.stringify(next, null, 2));

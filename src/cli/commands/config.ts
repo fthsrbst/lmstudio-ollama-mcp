@@ -14,6 +14,7 @@ export async function handleConfig(opts: { show?: boolean; path?: boolean }) {
   console.log(chalk.dim(`  global:  ${getGlobalConfigPath()}`));
   console.log(chalk.dim(`  project: ${findProjectConfig() ?? "(none)"}\n`));
   console.log(JSON.stringify(config, null, 2));
-  console.log(chalk.dim("\n  Edit: ~/.forgecode/config.json  or  ./forgecode.json"));
-  console.log(chalk.dim("  Docs: https://fthsrbst.github.io/forgecode#config\n"));
+  console.log(chalk.dim("\n  Edit: ~/.lmstudio-ollama-mcp/config.json  or  ./lmstudio-ollama-mcp.json"));
+  console.log(chalk.dim("  (legacy) ~/.forgecode/config.json / forgecode.json still supported"));
+  console.log(chalk.dim("  Docs: https://fthsrbst.github.io/lmstudio-ollama-mcp#config\n"));
 }

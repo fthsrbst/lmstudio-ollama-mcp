@@ -15,12 +15,13 @@ import { handleModels } from "./commands/models.js";
 import { handleConfig } from "./commands/config.js";
 import { handleInit } from "./commands/init.js";
 
-const pkg = { version: "0.1.0", name: "forgecode" };
+const pkg = { version: "0.1.0", name: "lmstudio-ollama-mcp" };
 
 const program = new Command();
 program
-  .name("forge")
-  .description("Local-first autonomous coding agent — Claude Code for LM Studio, Ollama & llama.cpp")
+  .name("lmstudio-ollama-mcp")
+  .alias("forge")
+  .description("Claude Code for local models — LM Studio · Ollama · llama.cpp bridge with hardware-aware parallel sub-agents")
   .version(pkg.version, "-v, --version")
   .option("--verbose", "verbose logging")
   .option("--model <id>", "override model (e.g. lmstudio:gemma-3-12b or ollama:qwen2.5-coder:7b)")
@@ -74,7 +75,7 @@ program
 
 program
   .command("init")
-  .description("Initialize forgecode.json in current project")
+  .description("Initialize lmstudio-ollama-mcp.json in current project")
   .action(async () => {
     await handleInit();
   });
@@ -90,10 +91,10 @@ program
 
 async function runInteractive(globalOpts: any) {
   const { default: inquirer } = await import("inquirer");
-  console.log(chalk.bold("\n  ForgeCode ") + chalk.dim(`v${pkg.version}`) + chalk.green("  ● local-first\n"));
+  console.log(chalk.bold("\n  lmstudio-ollama-mcp ") + chalk.dim(`v${pkg.version}`) + chalk.green("  ● local-first\n"));
   console.log(chalk.dim("  Tip: type a task, 'doctor', 'models', or 'exit'\n"));
   while (true) {
-    const { input } = await inquirer.prompt([{ type: "input", name: "input", message: chalk.cyan("forge>") }]);
+    const { input } = await inquirer.prompt([{ type: "input", name: "input", message: chalk.cyan("lmstudio-ollama-mcp>") }]);
     const trimmed = (input as string).trim();
     if (!trimmed) continue;
     if (["exit", "quit", "q"].includes(trimmed.toLowerCase())) break;
@@ -122,7 +123,7 @@ async function runTask(prompt: string, globalOpts: any) {
     }
   }
 
-  console.log(chalk.bold("\n▶ ForgeCode") + chalk.dim(`  • ${prompt.slice(0, 80)}${prompt.length > 80 ? "…" : ""}`));
+  console.log(chalk.bold("\n▶ lmstudio-ollama-mcp") + chalk.dim(`  • ${prompt.slice(0, 80)}${prompt.length > 80 ? "…" : ""}`));
   console.log(chalk.dim(`  hw: ${hw.cpu.cores} cores / ${hw.memory.totalGb}GB  • parallel: ${scheduler.maxParallel}  • strategy: ${config.router.strategy}`));
 
   // If single-agent mode or trivial task, run direct agent

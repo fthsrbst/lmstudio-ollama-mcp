@@ -1,13 +1,14 @@
-# ForgeCode
+# lmstudio-ollama-mcp
 
 <p align="center">
   <strong>Claude Code for Local Models</strong><br/>
-  Run autonomous coding agents on <b>LM Studio</b>, <b>Ollama</b> & <b>llama.cpp</b> — with hardware-aware parallel sub-agents.
+  LM Studio · Ollama · llama.cpp bridge with hardware-aware parallel sub-agents.<br/>
+  <em>Local-first. Private. Free. MCP-ready.</em>
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/forgecode"><img src="https://img.shields.io/npm/v/forgecode?style=flat-square&label=npm&color=0A0A0A" alt="npm"/></a>
-  <a href="https://github.com/fthsrbst/forgecode/actions"><img src="https://img.shields.io/github/actions/workflow/status/fthsrbst/forgecode/ci.yml?style=flat-square&label=CI" alt="CI"/></a>
+  <a href="https://www.npmjs.com/package/lmstudio-ollama-mcp"><img src="https://img.shields.io/npm/v/lmstudio-ollama-mcp?style=flat-square&label=npm&color=0A0A0A" alt="npm"/></a>
+  <a href="https://github.com/fthsrbst/lmstudio-ollama-mcp/actions"><img src="https://img.shields.io/github/actions/workflow/status/fthsrbst/lmstudio-ollama-mcp/ci.yml?style=flat-square&label=CI" alt="CI"/></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-black?style=flat-square" alt="MIT"/></a>
   <img src="https://img.shields.io/badge/node-%3E%3D18-black?style=flat-square" alt="node"/>
   <img src="https://img.shields.io/badge/local--first-100%25-lime?style=flat-square&labelColor=0A0A0A&color=BFFF00" alt="local-first"/>
@@ -15,27 +16,27 @@
 
 <p align="center">
   <a href="#quickstart">Quickstart</a> •
-  <a href="#why-forgecode">Why ForgeCode</a> •
+  <a href="#why-lmstudio-ollama-mcp">Why</a> •
   <a href="#architecture">Architecture</a> •
   <a href="#providers">Providers</a> •
   <a href="#parallel-sub-agents">Parallel Sub-Agents</a> •
   <a href="#configuration">Configuration</a> •
-  <a href="https://fthsrbst.github.io/forgecode">Landing Page</a>
+  <a href="https://fthsrbst.github.io/lmstudio-ollama-mcp">Landing Page</a>
 </p>
 
 ```
-npm install -g forgecode
-forge doctor
-forge "add unit tests for src/utils/logger.ts"
+npm install -g lmstudio-ollama-mcp
+lmstudio-ollama-mcp doctor   # or: forge doctor
+lmstudio-ollama-mcp "add unit tests for src/utils/logger.ts"
 ```
 
-> **Local-first. Private. Free. No API keys required.** Frontier models (GPT-4o, Claude 4) are optional — used only as planners while small local models do the work.
+> **Local-first. Private. Free. No API keys required.** Frontier models (GPT-4o, Claude 4) are optional — used only as planners while small local models do the work. Alias `forge` / `forgecode` keeps muscle memory.
 
 ---
 
-## Why ForgeCode
+## Why lmstudio-ollama-mcp
 
-| | Claude Code / Codex | **ForgeCode** |
+| | Claude Code / Codex | **lmstudio-ollama-mcp** |
 |---|---|---|
 | **Runs on** | Cloud API (paid, data leaves machine) | **LM Studio · Ollama · llama.cpp** (offline, private) |
 | **Cost** | $ per token | **$0** after model download |
@@ -43,8 +44,9 @@ forge "add unit tests for src/utils/logger.ts"
 | **Model choice** | Vendor-locked | **Any GGUF / OpenAI-compatible model** |
 | **Hybrid mode** | — | **Frontier plans, local executes** (optional) |
 | **Sandbox** | Cloud container | **Your filesystem, your rules** |
+| **MCP** | — | **Ready: bridges local runtimes as MCP tools** |
 
-**Single sentence:** ForgeCode brings the *Claude Code* agentic loop — read → plan → edit → verify with tools — to your MacBook, with an intelligent router that sends trivial tasks to a local 7B and hard reasoning to a frontier model only when needed.
+**Single sentence:** lmstudio-ollama-mcp brings the *Claude Code* agentic loop — read → plan → edit → verify with tools — to your MacBook, with an intelligent router that sends trivial tasks to a local 7B and hard reasoning to a frontier model only when needed.
 
 ---
 
@@ -52,28 +54,30 @@ forge "add unit tests for src/utils/logger.ts"
 
 ```bash
 # 1 — Diagnose
-forge doctor
+lmstudio-ollama-mcp doctor
 # Hardware: Apple M3 (8 cores / 16GB) • Recommended: 8 agents
 # ● lmstudio (LM Studio) http://localhost:1234/v1  available
 #   models: gemma-3-12b-qat, qwen3-27b-ud-iq2_s …
 
-forge models
+lmstudio-ollama-mcp models
 # ● lmstudio  ▸ gemma-3-12b-qat 6.5GB Q4_0
 #             ▸ qwen3-27b 7.8GB IQ2_S
 
 # 2 — One-shot
-forge "refactor src/providers into a registry + add tests. keep public API stable"
+lmstudio-ollama-mcp "refactor src/providers into a registry + add tests. keep public API stable"
 
 # 3 — Parallel (auto-splits into sub-agents)
+lmstudio-ollama-mcp --parallel 4 "implement auth module, write tests, and update docs"
+# forge alias also works:
 forge --parallel 4 "implement auth module, write tests, and update docs"
 
 # 4 — Force a specific model
-forge --model ollama:qwen2.5-coder:14b "explain this repo's error handling"
-forge --provider lmstudio --model gemma-3-12b "fix the failing test in tests/tools.test.ts"
+lmstudio-ollama-mcp --model ollama:qwen2.5-coder:14b "explain this repo's error handling"
+lmstudio-ollama-mcp --provider lmstudio --model gemma-3-12b "fix the failing test in tests/tools.test.ts"
 
 # 5 — Interactive
-forge
-# forge> add dark mode to docs/index.html
+lmstudio-ollama-mcp
+# lmstudio-ollama-mcp> add dark mode to docs/index.html
 ```
 
 ---
@@ -91,18 +95,19 @@ forge
 ### Install
 
 ```bash
-npm install -g forgecode
+npm install -g lmstudio-ollama-mcp
+# aliases also available: forge, forgecode
 # or one-off
-npx forgecode doctor
+npx lmstudio-ollama-mcp doctor
 ```
 
 ### First run
 
 ```bash
 git clone https://github.com/your-org/your-project && cd your-project
-forge init          # creates forgecode.json
-forge doctor        # verify providers + hardware
-forge "list the codebase structure and suggest 3 small improvements"
+lmstudio-ollama-mcp init   # creates lmstudio-ollama-mcp.json (also reads forgecode.json for compat)
+lmstudio-ollama-mcp doctor # verify providers + hardware
+lmstudio-ollama-mcp "list the codebase structure and suggest 3 small improvements"
 ```
 
 No API keys needed for local-only mode. For hybrid mode (frontier + local), set env:
@@ -118,7 +123,8 @@ export ANTHROPIC_API_KEY=sk-ant-...
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│  CLI  forge "task"  •  forge doctor  •  forge models    │
+│  CLI  lmstudio-ollama-mcp "task"  •  doctor  •  models   │
+│       aliases: forge, forgecode                         │
 ├─────────────────────────────────────────────────────────┤
 │  Router  (strategy: auto | local-first | frontier-first)│
 │  ├─ classify(prompt) → trivial | small | medium | large │
@@ -169,12 +175,12 @@ User prompt
 | OpenAI | `https://api.openai.com/v1` | API | Set `OPENAI_API_KEY` |
 | Anthropic | `https://api.anthropic.com` | API | Set `ANTHROPIC_API_KEY` |
 
-All providers speak **OpenAI-compatible Chat Completions** with `tools` (function calling). Forge normalizes `reasoning_content` (Qwen/Gemma) automatically.
+All providers speak **OpenAI-compatible Chat Completions** with `tools` (function calling). Normalizes `reasoning_content` (Qwen/Gemma) automatically.
 
 ### Adding a custom endpoint
 
 ```json
-// forgecode.json
+// lmstudio-ollama-mcp.json
 {
   "providers": {
     "my-local": { "type": "openai", "baseUrl": "http://192.168.1.10:1234/v1", "enabled": true }
@@ -186,7 +192,7 @@ All providers speak **OpenAI-compatible Chat Completions** with `tools` (functio
 
 ## Parallel Sub-Agents
 
-Forge splits complex goals into **2–6 independent sub-tasks** via a planner LLM (frontier if available, otherwise local). Execution is bounded by hardware:
+Splits complex goals into **2–6 independent sub-tasks** via a planner LLM (frontier if available, otherwise local). Execution is bounded by hardware:
 
 ```ts
 // hardware/detector.ts — recommendParallelism()
@@ -197,7 +203,7 @@ maxParallel = min(cpuLimit, memLimit) + appleSiliconBonus
 ```
 
 ```bash
-forge --parallel 8 "migrate codebase from Jest to Vitest"
+lmstudio-ollama-mcp --parallel 8 "migrate codebase from Jest to Vitest"
 # Decomposed:
 #  t1 Explore & plan  →  search (routed to local 7B)
 #  t2 Implement       →  code   (routed to local or frontier)
@@ -213,15 +219,16 @@ Tasks with `dependsOn` are batched topologically — batch N only starts after N
 
 ## Configuration
 
-Config resolution: **`DEFAULT` < `~/.forgecode/config.json` < `./forgecode.json`** < env vars.
+Config resolution: **`DEFAULT` < `~/.lmstudio-ollama-mcp/config.json` < `./lmstudio-ollama-mcp.json`** < env vars.  
+Legacy `~/.forgecode/config.json` and `forgecode.json` / `forge.json` are still read for backward compat (new path takes precedence).
 
 ```bash
-forge config --show   # resolved JSON
-forge config --path   # file locations
-forge init            # scaffold forgecode.json
+lmstudio-ollama-mcp config --show   # resolved JSON
+lmstudio-ollama-mcp config --path   # file locations
+lmstudio-ollama-mcp init            # scaffold lmstudio-ollama-mcp.json
 ```
 
-### `forgecode.json` reference
+### `lmstudio-ollama-mcp.json` reference
 
 ```jsonc
 {
@@ -285,11 +292,11 @@ Safety: path escape blocked unless `permissions.allowWriteOutsideWorkspace=true`
 
 | Task | Why local wins | Example |
 |---|---|---|
-| **Lint / format / grep** | 0.2s vs 2s RTT | `forge "format src/**/*.ts with prettier"` |
-| **Explain / summarize** | Private codebase stays local | `forge "explain how auth works"` |
-| **Small edits** | No queue, no cost | `forge "add zod validation to src/config/schema.ts"` |
-| **Large refactor** | Frontier plans, locals execute in parallel | `forge "migrate to ESM"` |
-| **Hard reasoning** | 70B / frontier needed | `forge --model openai:gpt-4o "design CRDT sync"` |
+| **Lint / format / grep** | 0.2s vs 2s RTT | `lmstudio-ollama-mcp "format src/**/*.ts with prettier"` |
+| **Explain / summarize** | Private codebase stays local | `lmstudio-ollama-mcp "explain how auth works"` |
+| **Small edits** | No queue, no cost | `lmstudio-ollama-mcp "add zod validation to src/config/schema.ts"` |
+| **Large refactor** | Frontier plans, locals execute in parallel | `lmstudio-ollama-mcp "migrate to ESM"` |
+| **Hard reasoning** | 70B / frontier needed | `lmstudio-ollama-mcp --model openai:gpt-4o "design CRDT sync"` |
 
 ---
 
@@ -322,11 +329,11 @@ docs/             GitHub Pages landing (WizardZ-inspired, lime/black)
 ## Roadmap
 
 - [ ] Streaming output (`--stream`)
-- [ ] MCP (Model Context Protocol) client
-- [ ] Persistent memory (`.forgecode/memory.md`)
-- [ ] `forge plan` — dry-run decomposition without execution
+- [ ] MCP (Model Context Protocol) server — expose local models as MCP tools for other agents
+- [ ] Persistent memory (`.lmstudio-ollama-mcp/memory.md`)
+- [ ] `lmstudio-ollama-mcp plan` — dry-run decomposition without execution
 - [ ] Vision models (Gemma 12B multimodal) for screenshot-driven UI work
-- [ ] `forge hooks` — pre/post tool hooks
+- [ ] `hooks` — pre/post tool hooks
 - [ ] Windows / Linux GPU (CUDA/Vulkan) scheduler hints
 
 ---
@@ -343,7 +350,7 @@ npm run build && npm test
 
 ## Keywords
 
-`lm-studio` `ollama` `llama.cpp` `local-llm` `local-first` `coding-agent` `autonomous-agent` `claude-code` `codex` `sub-agents` `parallel-agents` `hardware-aware` `openai-compatible` `gguf` `agentic` `dev-tools` `ai-coding` `on-device-ai` `privacy`
+`lm-studio` `lmstudio` `ollama` `llama.cpp` `local-llm` `local-first` `coding-agent` `autonomous-agent` `claude-code` `codex` `sub-agents` `parallel-agents` `mcp` `model-context-protocol` `hardware-aware` `openai-compatible` `gguf` `agentic` `dev-tools` `ai-coding` `on-device-ai` `privacy`
 
 ---
 
@@ -351,4 +358,4 @@ npm run build && npm test
 
 MIT — see [LICENSE](./LICENSE).
 
-<p align="center"><sub>Built for developers who want <b>Claude Code</b> without the cloud.</sub></p>
+<p align="center"><sub>Built for developers who want <b>Claude Code</b> without the cloud — now as an <b>LM Studio · Ollama bridge</b>.</sub></p>

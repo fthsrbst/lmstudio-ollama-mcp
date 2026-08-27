@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to ForgeCode.
+All notable changes to lmstudio-ollama-mcp.
 
 ## 0.1.0 — 2026-08-27
 
@@ -11,7 +11,7 @@ All notable changes to ForgeCode.
 - Orchestrator: planner decomposes into 2–6 sub-tasks, Scheduler with hardware-aware `maxParallel` (cores × RAM, Apple Silicon bonus)
 - Agent: 25-turn tool loop, 7 tools (read/write/edit/bash/glob/grep/list_dir), `reasoning_content` normalization
 - Hardware: `detectHardware()` + `recommendParallelism()` + `Scheduler` (p-limit)
-- Config: layered `DEFAULT < ~/.forgecode/config.json < ./forgecode.json` + env overrides, Zod schema
+- Config: layered `DEFAULT < ~/.lmstudio-ollama-mcp/config.json < ./lmstudio-ollama-mcp.json` + env overrides, Zod schema (legacy forgecode.json still supported)
 - Tools: workspace-sandboxed, path-escape guard, dangerous-command block, output truncation
 - Tests: 24 passing (hardware, tools, router, config, providers)
 - Docs: GitHub Pages landing (WizardZ-inspired) + professional README

@@ -4,7 +4,7 @@ import { ProviderRegistry } from "../../providers/registry.js";
 import { detectHardware, formatHardware } from "../../hardware/detector.js";
 
 export async function handleDoctor() {
-  console.log(chalk.bold("\n  ForgeCode — doctor\n"));
+  console.log(chalk.bold("\n  lmstudio-ollama-mcp — doctor\n"));
 
   const hw = detectHardware();
   console.log(chalk.bold("Hardware:"));
@@ -60,8 +60,8 @@ export async function handleDoctor() {
   }
 
   console.log(chalk.bold("\n  Next steps:"));
-  console.log(chalk.dim("    forge \"add a hello world test\"     # single task"));
-  console.log(chalk.dim("    forge models                         # list models"));
-  console.log(chalk.dim("    forge --provider lmstudio --model gemma-3-12b \"...\""));
+  console.log(chalk.dim("    lmstudio-ollama-mcp \"add a hello world test\"   # or: forge \"...\""));
+  console.log(chalk.dim("    lmstudio-ollama-mcp models                       # list models"));
+  console.log(chalk.dim("    lmstudio-ollama-mcp --provider lmstudio --model gemma-3-12b \"...\""));
   console.log("");
 }

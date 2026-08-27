@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ForgeCode — Claude Code for Local Models</title>
+<title>lmstudio-ollama-mcp — Claude Code for Local Models</title>
 <meta name="description" content="Run autonomous coding agents on LM Studio, Ollama & llama.cpp. Hardware-aware parallel sub-agents. Local-first, private, free." />
 <meta name="keywords" content="lm-studio, ollama, llama.cpp, local-llm, coding-agent, claude-code, codex, sub-agents, local-first, hardware-aware, gguf" />
-<meta property="og:title" content="ForgeCode — Claude Code for Local Models" />
+<meta property="og:title" content="lmstudio-ollama-mcp — Claude Code for Local Models" />
 <meta property="og:description" content="Frontier-grade coding agents, zero cloud dependency." />
 <meta property="og:type" content="website" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,17 +169,17 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-left">
-      <a class="logo" href="#"><span class="logo-mark">◆</span> ForgeCode</a>
+      <a class="logo" href="#"><span class="logo-mark">◆</span> lmstudio-ollama-mcp</a>
     </div>
     <div class="nav-links">
       <a href="#why">Why local</a>
       <a href="#providers">Providers</a>
       <a href="#agents">Agents</a>
       <a href="#docs">Docs</a>
-      <a href="https://github.com/fthsrbst/forgecode" target="_blank">GitHub</a>
+      <a href="https://github.com/fthsrbst/lmstudio-ollama-mcp" target="_blank">GitHub</a>
     </div>
     <div class="nav-cta">
-      <a class="btn-pill" href="https://github.com/fthsrbst/forgecode" target="_blank">★ Star on GitHub</a>
+      <a class="btn-pill" href="https://github.com/fthsrbst/lmstudio-ollama-mcp" target="_blank">★ Star on GitHub</a>
       <a class="btn-pill black" href="#install">Get started</a>
     </div>
   </nav>
@@ -198,13 +198,13 @@
         Your code never leaves the laptop.
       </p>
       <div class="hero-ctas">
-        <a class="btn-pill black" href="#install">Install — npm i -g forgecode</a>
-        <a class="btn-pill" href="https://github.com/fthsrbst/forgecode" target="_blank">Read the docs →</a>
+        <a class="btn-pill black" href="#install">Install — npm i -g lmstudio-ollama-mcp</a>
+        <a class="btn-pill" href="https://github.com/fthsrbst/lmstudio-ollama-mcp" target="_blank">Read the docs →</a>
       </div>
       <div class="code-mini">
-        <div><span class="dim">$</span> forge doctor <span class="dim">— diagnose providers & hardware</span></div>
-        <div><span class="dim">$</span> forge models <span class="dim">— list GGUF / Ollama models</span></div>
-        <div><span class="dim">$</span> forge <span class="lime-c">"add tests for src/utils/logger.ts"</span></div>
+        <div><span class="dim">$</span> lmstudio-ollama-mcp doctor <span class="dim">— diagnose providers & hardware</span></div>
+        <div><span class="dim">$</span> lmstudio-ollama-mcp models <span class="dim">— list GGUF / Ollama models</span></div>
+        <div><span class="dim">$</span> lmstudio-ollama-mcp <span class="lime-c">"add tests for src/utils/logger.ts"</span> <span class="dim" style="font-size:10px">(alias: forge)</span></div>
         <div style="margin-top:6px;color:#9A9A9A;font-size:11px">↳ gemma-3-12b-qat · 6.5GB Q4_0 · 8 agents · 1.2 s</div>
       </div>
     </div>
@@ -295,7 +295,7 @@
   <!-- CODE DEMO -->
   <div class="code-block" id="docs">
     <div class="code-bar"><i style="background:#FF5F56"></i><i style="background:#FFBD2E"></i><i style="background:#27C93F"></i><div class="t">forge — local-first coding agent</div></div>
-<pre class="code-pre"><span style="color:#8A8A9A">$ forge --parallel 4 "migrate codebase from Jest to Vitest"</span>
+<pre class="code-pre"><span style="color:#8A8A9A">$ lmstudio-ollama-mcp --parallel 4 "migrate codebase from Jest to Vitest"</span>
 <span style="color:#BFFF00">▶ Decomposed into 3 sub-tasks:</span>
   • <span style="color:#fff">t1 Explore & plan</span>   <span style="color:#9A9A9A">[search → lmstudio/gemma-3-12b]</span>
   • <span style="color:#fff">t2 Implement</span>    <span style="color:#9A9A9A">[code → lmstudio/qwen3-27b]</span>
@@ -338,7 +338,7 @@ Files: <span style="color:#fff">vitest.config.ts</span>, <span style="color:#fff
       <div class="code-block" style="margin:0">
         <div class="code-bar"><i style="background:#FF5F56"></i><i style="background:#FFBD2E"></i><i style="background:#27C93F"></i><div class="t">bash</div></div>
 <pre class="code-pre"><span style="color:#8A8A9A"># 1 — install</span>
-npm install -g forgecode
+npm install -g lmstudio-ollama-mcp
 
 <span style="color:#8A8A9A"># 2 — start your local runtime (one of)</span>
 <span style="color:#BFFF00">lms</span> server start          <span style="color:#6A6A6A"># LM Studio</span>
@@ -364,10 +364,10 @@ forge --parallel 4 <span style="color:#BFFF00">"add tests + docs for the new reg
 
   <!-- FOOT -->
   <footer class="foot">
-    <div><span class="brand">◆ ForgeCode</span> <span style="margin-left:8px">MIT · Local-first · No telemetry</span></div>
+    <div><span class="brand">◆ lmstudio-ollama-mcp</span> <span style="margin-left:8px">MIT · Local-first · No telemetry</span></div>
     <div>
-      <a href="https://github.com/fthsrbst/forgecode">GitHub</a> &nbsp;·&nbsp;
-      <a href="https://www.npmjs.com/package/forgecode">npm</a> &nbsp;·&nbsp;
+      <a href="https://github.com/fthsrbst/lmstudio-ollama-mcp">GitHub</a> &nbsp;·&nbsp;
+      <a href="https://www.npmjs.com/package/lmstudio-ollama-mcp">npm</a> &nbsp;·&nbsp;
       <a href="#install">Docs</a>
     </div>
   </footer>

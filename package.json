@@ -1,12 +1,13 @@
 {
-  "name": "forgecode",
+  "name": "lmstudio-ollama-mcp",
   "version": "0.1.0",
-  "description": "Local-first autonomous coding agent — Claude Code for LM Studio, Ollama & llama.cpp with hardware-aware parallel sub-agents",
+  "description": "Claude Code for local models — LM Studio, Ollama & llama.cpp bridge with hardware-aware parallel sub-agents (MCP-ready)",
   "keywords": [
     "ai",
     "coding-agent",
     "autonomous-agent",
     "lm-studio",
+    "lmstudio",
     "ollama",
     "llama.cpp",
     "local-llm",
@@ -15,6 +16,8 @@
     "codex",
     "sub-agents",
     "parallel-agents",
+    "mcp",
+    "model-context-protocol",
     "dev-tools",
     "llm",
     "openai-compatible",
@@ -23,10 +26,11 @@
     "code-generation",
     "developer-tools"
   ],
-  "author": "ForgeCode Contributors",
+  "author": "lmstudio-ollama-mcp Contributors",
   "license": "MIT",
   "type": "module",
   "bin": {
+    "lmstudio-ollama-mcp": "./dist/cli/index.js",
     "forge": "./dist/cli/index.js",
     "forgecode": "./dist/cli/index.js"
   },
@@ -73,10 +77,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/fthsrbst/forgecode.git"
+    "url": "https://github.com/fthsrbst/lmstudio-ollama-mcp.git"
   },
-  "homepage": "https://fthsrbst.github.io/forgecode",
+  "homepage": "https://fthsrbst.github.io/lmstudio-ollama-mcp",
   "bugs": {
-    "url": "https://github.com/fthsrbst/forgecode/issues"
+    "url": "https://github.com/fthsrbst/lmstudio-ollama-mcp/issues"
   }
 }
