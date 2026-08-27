@@ -73,10 +73,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/forgecode-ai/forgecode.git"
+    "url": "https://github.com/fthsrbst/forgecode.git"
   },
-  "homepage": "https://forgecode-ai.github.io/forgecode",
+  "homepage": "https://fthsrbst.github.io/forgecode",
   "bugs": {
-    "url": "https://github.com/forgecode-ai/forgecode/issues"
+    "url": "https://github.com/fthsrbst/forgecode/issues"
   }
 }

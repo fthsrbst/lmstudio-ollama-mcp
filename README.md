@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://www.npmjs.com/package/forgecode"><img src="https://img.shields.io/npm/v/forgecode?style=flat-square&label=npm&color=0A0A0A" alt="npm"/></a>
-  <a href="https://github.com/forgecode-ai/forgecode/actions"><img src="https://img.shields.io/github/actions/workflow/status/forgecode-ai/forgecode/ci.yml?style=flat-square&label=CI" alt="CI"/></a>
+  <a href="https://github.com/fthsrbst/forgecode/actions"><img src="https://img.shields.io/github/actions/workflow/status/fthsrbst/forgecode/ci.yml?style=flat-square&label=CI" alt="CI"/></a>
   <a href="./LICENSE"><img src="https://img.shields.io/badge/license-MIT-black?style=flat-square" alt="MIT"/></a>
   <img src="https://img.shields.io/badge/node-%3E%3D18-black?style=flat-square" alt="node"/>
   <img src="https://img.shields.io/badge/local--first-100%25-lime?style=flat-square&labelColor=0A0A0A&color=BFFF00" alt="local-first"/>
@@ -20,7 +20,7 @@
   <a href="#providers">Providers</a> •
   <a href="#parallel-sub-agents">Parallel Sub-Agents</a> •
   <a href="#configuration">Configuration</a> •
-  <a href="https://forgecode-ai.github.io/forgecode">Landing Page</a>
+  <a href="https://fthsrbst.github.io/forgecode">Landing Page</a>
 </p>
 
 ```

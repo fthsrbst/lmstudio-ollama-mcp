@@ -15,5 +15,5 @@ export async function handleConfig(opts: { show?: boolean; path?: boolean }) {
   console.log(chalk.dim(`  project: ${findProjectConfig() ?? "(none)"}\n`));
   console.log(JSON.stringify(config, null, 2));
   console.log(chalk.dim("\n  Edit: ~/.forgecode/config.json  or  ./forgecode.json"));
-  console.log(chalk.dim("  Docs: https://forgecode-ai.github.io/forgecode#config\n"));
+  console.log(chalk.dim("  Docs: https://fthsrbst.github.io/forgecode#config\n"));
 }
